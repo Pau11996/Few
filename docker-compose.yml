@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    restart: always
+    env_file: core-api/.dev.env
+    container_name: mysql-db
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  web-api:
+    build:
+      context: core-api
+      dockerfile: Dockerfile
+    env_file: core-api/.dev.env
+    restart: always
+    ports:
+      - '5000:5000'
+    container_name: web-api
+    depends_on:
+      - db
+    volumes:
+      - ./core-api:/usr/src/app/
+      - /usr/src/app/node_modules
+volumes:
+  mysql_data:
