@@ -6,7 +6,7 @@ describe('UsersController', () => {
   let controller: UsersController;
 
   const mockUserService = {
-    createUser: jest.fn((dto) => {
+    create1: jest.fn((dto) => {
       return {
         id: Date.now(),
         ...dto,
