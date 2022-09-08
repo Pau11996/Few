@@ -14,7 +14,7 @@ import { AuthModule } from './auth/auth.module';
       host: process.env.MYSQL_HOST,
       port: Number(process.env.MYSQL_PORT),
       username: process.env.MYSQL_USERNAME,
-      password: process.env.MYSQL_PASSWORD,
+      password: process.env.MYSQL_ROOT_PASSWORD,
       database: process.env.MYSQL_NAME,
       entities: [__dirname + '/**/entities/*.entity{.ts,.js}'],
       synchronize: true,
