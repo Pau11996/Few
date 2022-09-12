@@ -21,7 +21,7 @@ services:
       - db
     volumes:
       - ./core-api:/usr/src/app/
-      - node_modules:/usr/src/app/node_modules
+      - node_modules:/usr/src/node_modules
 volumes:
   mysql_data:
   node_modules:

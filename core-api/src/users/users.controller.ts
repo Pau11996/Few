@@ -37,7 +37,7 @@ export class UsersController {
 
   @ApiOperation({ summary: 'Get one user' })
   @ApiResponse({ status: 201, type: [User] })
-  @Roles('customer')
+  @Roles('customer', 'admin')
   @UseGuards(RolesGuard)
   @Get('/users/:id')
   getOneUser(@Param('id') id: string) {
@@ -46,7 +46,7 @@ export class UsersController {
 
   @ApiOperation({ summary: 'Change User Info' })
   @ApiResponse({ status: 201, type: [User] })
-  @Roles('customer')
+  @Roles('admin', 'customer')
   @UseGuards(RolesGuard)
   @Put('/users/:id')
   updateUserInfo(@Body() userDto: CreateUserDto, @Param('id') id: string) {
