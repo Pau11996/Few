@@ -3,8 +3,8 @@ import { IsEmail, IsString, Length } from 'class-validator';
 import { UserRole } from '../entities/user.entity';
 
 export class CreateUserDto {
-  @IsString({ message: 'Must be string' })
   @ApiProperty({ example: '123@mail.ru', description: 'uniq email' })
+  @IsString({ message: 'Must be string' })
   @IsEmail({}, { message: 'Wrong email' })
   readonly email: string;
 
