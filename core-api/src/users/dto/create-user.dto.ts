@@ -16,4 +16,7 @@ export class CreateUserDto {
   @ApiProperty({ example: 'admin', description: 'users role' })
   @IsString({ message: 'Must be string' })
   readonly role: UserRole;
+
+  @ApiProperty({ example: 'ava.png', description: 'users avatar in profile' })
+  readonly avatar: string;
 }

@@ -9,15 +9,17 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { User } from '../users/entities/user.entity';
+import { FilesService } from '../files/files.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private userService: UsersService,
     private jwtService: JwtService,
+    private fileService: FilesService,
   ) {}
 
-  async register(userDto: CreateUserDto) {
+  async register(userDto: CreateUserDto, avatar: any) {
     const candidate = await this.userService.getUserByEmail(userDto.email);
     if (candidate) {
       throw new HttpException(
@@ -26,9 +28,11 @@ export class AuthService {
       );
     }
     const hashPassword = await bcrypt.hash(userDto.password, 5);
+    const fileName = await this.fileService.createFile(avatar);
     const user = await this.userService.createUser({
       ...userDto,
       password: hashPassword,
+      avatar: fileName,
     });
     return this.generateToken(user);
   }
