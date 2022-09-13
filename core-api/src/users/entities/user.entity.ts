@@ -27,4 +27,11 @@ export class User {
   })
   @Column({ nullable: false, default: UserRole.CUSTOMER })
   role: UserRole;
+
+  @ApiProperty({
+    example: 'admin',
+    description: 'users role',
+  })
+  @Column({ nullable: true })
+  avatar: string;
 }
