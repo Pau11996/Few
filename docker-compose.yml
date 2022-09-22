@@ -15,7 +15,7 @@ services:
     env_file: core-api/.dev.env
     restart: always
     ports:
-      - '5000:5000'
+      - '7000:7000'
     container_name: web-api
     depends_on:
       - db

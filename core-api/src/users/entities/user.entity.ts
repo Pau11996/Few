@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
+import { Review } from '../../reviews/entities/review.entity';
 
 export enum UserRole {
   ADMIN = 'admin',
@@ -34,4 +35,8 @@ export class User {
   })
   @Column({ nullable: true })
   avatar: string;
+
+  @ApiProperty({ example: 'Users reviews', description: 'Product price' })
+  @ManyToOne(() => Review, (review) => review.user)
+  reviews: Review[];
 }

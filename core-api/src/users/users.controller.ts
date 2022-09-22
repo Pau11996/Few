@@ -21,6 +21,8 @@ export class UsersController {
 
   @ApiOperation({ summary: 'User creation' })
   @ApiResponse({ status: 201, type: User })
+  @Roles('admin')
+  @UseGuards(RolesGuard)
   @Post('/users')
   create(@Body() userDto: CreateUserDto) {
     return this.usersService.createUser(userDto);
@@ -28,7 +30,7 @@ export class UsersController {
 
   @ApiOperation({ summary: 'Get all user' })
   @ApiResponse({ status: 201, type: [User] })
-  @Roles('customer')
+  @Roles('admin')
   @UseGuards(RolesGuard)
   @Get('/users')
   getAll() {
