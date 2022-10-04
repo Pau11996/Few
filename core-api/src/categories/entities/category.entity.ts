@@ -19,7 +19,7 @@ export class Category {
     example: 'file_path.jpg',
     description: 'Category photo',
   })
-  @Column()
+  @Column({ nullable: true })
   images: string;
 
   @ApiProperty({

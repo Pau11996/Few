@@ -37,7 +37,7 @@ export class Product {
     example: 'file_path.jpg',
     description: 'Product photos',
   })
-  @Column({ type: 'simple-array' })
+  @Column({ type: 'simple-array', nullable: true })
   images: string[];
 
   @ApiProperty({
