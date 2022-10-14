@@ -1,0 +1,15 @@
+# Ignore some folder
+core-api/node_modules
+core-api/dist
+mysql_data
+.idea
+
+# Ignore all text files
+*.txt
+
+# Ignore files related to API keys
+core-api/.dev.env
+
+# Ignore SASS config files
+.sass-cache
+
